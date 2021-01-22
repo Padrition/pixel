@@ -1,10 +1,10 @@
 # pixel
 
 Pixel is a go module for creating pixeled images with various settings that allow you to choose parameters like:
-*Size of an image
-*Size of a space that will be filled with a color
-*Numbers of random colors
-*Particular colors that you want to randomly place on a canvas
+* Size of an image
+* Size of a space that will be filled with a color
+* Numbers of random colors
+* Particular colors that you want to randomly place on a canvas
 
 ## Instalation
 
