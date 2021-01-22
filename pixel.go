@@ -5,8 +5,6 @@ import(
 	"image/color"
 	"time"
 	"image"
-	"os"
-	"image/png"
 )
 
 func init(){
@@ -17,7 +15,7 @@ func randomColor() color.NRGBA{
 	return color.NRGBA{R : uint8(rand.Intn(255)), G : uint8(rand.Intn(255)), B :  uint8(rand.Intn(255)), A: 0xff}
 }
 
-func CreateImgWithRandFilling(width, height int){
+func CreateImgWithRandFilling(width, height int) image.Image{
 	upleft := image.Point{0,0}
 	downright := image.Point{width,height}
 
@@ -30,6 +28,5 @@ func CreateImgWithRandFilling(width, height int){
 		}
 	}
 
-	f, _ := os.Create("test.png")
-	png.Encode(f, img)
+	return img
 }
