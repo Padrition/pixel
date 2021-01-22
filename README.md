@@ -6,13 +6,13 @@ Pixel is a go module for creating pixeled images with various settings that allo
 *Numbers of random colors
 *Particular colors that you want to randomly place on a canvas
 
-##Instalation
+## Instalation
 
 ```bash
 git clone https://github.com/Padrition/pixel.git
 ```
 
-##Usage 
+## Usage 
 
 To create a fixed size image with a pixels of random RGB color in it use:
 ```go
