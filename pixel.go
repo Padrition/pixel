@@ -51,3 +51,25 @@ func RandFixedSizePixelsImg(width, height, pixSize int) image.Image{
 	return img
 
 }
+
+func RandFixedNumOfColorsImg(width, height, numOfColors int) image.Image{
+	upleft := image.Point{0,0}
+	downright := image.Point{width,height}
+
+	img := image.NewRGBA(image.Rectangle{upleft, downright})
+	
+	colorsArray := make([]color.NRGBA, numOfColors)
+	
+	for i := 0; i < numOfColors; i++ {
+		colorsArray[i] = randomColor()
+	}
+
+	for x:= 0; x <width; x++{
+		for y:=0; y<height; y++{
+			img.Set(x,y,colorsArray[rand.Intn(numOfColors)])
+		}
+	}
+
+	return img
+
+}

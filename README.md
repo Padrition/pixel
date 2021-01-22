@@ -14,6 +14,8 @@ git clone https://github.com/Padrition/pixel.git
 
 ## Usage 
 
+All functions return image.Image
+
 To create a fixed size image with a pixels of random RGB color in it use:
 ```go
 	img := pixel.RandPixelsImg(width, height)
@@ -22,4 +24,9 @@ To create a fixed size image with a pixels of random RGB color in it use:
 To create a fixed size image with a fixed size pixels bloack of random RGB color in it use:
 ```go
 	img := pixe.RandFixedSizePixelsImg(width, height, boxSize)
+```
+
+To create a fixed size image with pixels of a fixed number of random RGB colors in it use:
+```go
+	img := RandFixedNumOfColorsImg(width, height, numOfColors)
 ```
