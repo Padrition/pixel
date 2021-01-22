@@ -15,7 +15,7 @@ func randomColor() color.NRGBA{
 	return color.NRGBA{R : uint8(rand.Intn(255)), G : uint8(rand.Intn(255)), B :  uint8(rand.Intn(255)), A: 0xff}
 }
 
-func CreateImgWithRandFilling(width, height int) image.Image{
+func RandPixelsImg(width, height int) image.Image{
 	upleft := image.Point{0,0}
 	downright := image.Point{width,height}
 
@@ -29,4 +29,25 @@ func CreateImgWithRandFilling(width, height int) image.Image{
 	}
 
 	return img
+}
+
+func RandFixedSizePixelsImg(width, height, pixSize int) image.Image{
+	upleft := image.Point{0,0}
+	downright := image.Point{width,height}
+
+	img := image.NewRGBA(image.Rectangle{upleft, downright})
+	
+	for x:= 0; x <width; x = x + pixSize{
+		for y:=0; y<height; y = y + pixSize{
+			r := randomColor()
+			for i:=0;i<pixSize;i++{
+				for j:=0;j<pixSize;j++{
+					img.Set(x+i,y+j,r)
+				}
+			}
+		}
+	}
+
+	return img
+
 }

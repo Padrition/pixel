@@ -16,5 +16,10 @@ git clone https://github.com/Padrition/pixel.git
 
 To create a fixed size image with a pixels of random RGB color in it use:
 ```go
-	img := pixel.CreateImgWithRandFill(width, height)
+	img := pixel.RandPixelsImg(width, height)
+```
+
+To create a fixed size image with a fixed size pixels bloack of random RGB color in it use:
+```go
+	img := pixe.RandFixedSizePixelsImg(width, height, boxSize)
 ```
