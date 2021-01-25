@@ -8,10 +8,10 @@ import(
 )
 
 type PixelImage struct {
-	Width int
-	Height int
-	PixelBlockSize int
-	NumOfColors int
+	Width 		uint8
+	Height 		uint8
+	PixelBlockSize 	uint8
+	NumOfColors 	uint8
 }
 
 func init(){
@@ -24,16 +24,21 @@ func randomColor() color.NRGBA{
 
 func CreatePixeledImg(pixImg PixelImage) image.Image{
 	
-	colors := make([]color.NRGBA, pixImg.NumOfColors)
+	width 		:= int(pixImg.Width)
+	height		:= int(pixImg.Height)
+	blockSize	:= int(pixImg.PixelBlockSize)
+	numOfColors	:= int(pixImg.NumOfColors)
+
+	colors := make([]color.NRGBA, numOfColors)
 	var infColor bool
 
 	upleft := image.Point{0,0}
-	downright := image.Point{pixImg.Width, pixImg.Height}
+	downright := image.Point{width, height}
 	
 	img := image.NewRGBA(image.Rectangle{upleft, downright})
 
-	if pixImg.NumOfColors > 1 {
-		for i := 0; i <  pixImg.NumOfColors; i++{
+	if numOfColors > 1 {
+		for i := 0; i < numOfColors; i++{
 			colors[i] = randomColor()
 		}
 		infColor = false
@@ -41,18 +46,18 @@ func CreatePixeledImg(pixImg PixelImage) image.Image{
 		infColor = true
 	}
 
-	for x := 0; x < pixImg.Width; x = x + pixImg.PixelBlockSize{
-		for y := 0; y < pixImg.Height; y = y + pixImg.PixelBlockSize{
+	for x := 0; x < width; x = x + blockSize{
+		for y := 0; y < height; y = y + blockSize{
 			if infColor == true{
-				for ix := 0; ix < pixImg.PixelBlockSize; ix ++{
-					for iy := 0; iy < pixImg.PixelBlockSize; iy ++ {
+				for ix := 0; ix < blockSize; ix ++{
+					for iy := 0; iy < blockSize; iy ++ {
 						img.Set(x + ix, y + iy, randomColor())
 					}
 				}
 			}else {
-				c := colors[rand.Intn(pixImg.NumOfColors)]
-				for ix := 0; ix < pixImg.PixelBlockSize; ix ++{
-					for iy := 0; iy < pixImg.PixelBlockSize; iy ++ {
+				c := colors[rand.Intn(numOfColors)]
+				for ix := 0; ix < blockSize; ix ++{
+					for iy := 0; iy < blockSize; iy ++ {
 						img.Set(x + ix, y + iy, c)
 					}
 				}
