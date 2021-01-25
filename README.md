@@ -14,19 +14,24 @@ git clone https://github.com/Padrition/pixel.git
 
 ## Usage 
 
-All functions return image.Image
+After instaling the module you need to create an instance of PixelImage :
 
-To create a fixed size image with a pixels of random RGB color in it use:
 ```go
-	img := pixel.RandPixelsImg(width, height)
+
+	pix := pixel.PixelImage{width, height, sizeOfColorBlock, numberOfColors}
+
+```
+* width - sets the width of a picture
+* height - sets the height of a picture
+* sizeOfColorBlock - sets the area size wich single color will occupy(seted to 10 will make single color occupy 10 by 10 pixels area)
+* numberOfColors - sets the limit on number of colors you want to be present on a canvas(seted to 0 or 1 will set no limit on number of colors)
+
+After that use the PixelImage instace as a param for the CreatePixeledImg function :
+
+```go
+
+	img := pixel.CreatePixeledImg(pix)
+
 ```
 
-To create a fixed size image with a fixed size pixels bloack of random RGB color in it use:
-```go
-	img := pixe.RandFixedSizePixelsImg(width, height, boxSize)
-```
-
-To create a fixed size image with pixels of a fixed number of random RGB colors in it use:
-```go
-	img := RandFixedNumOfColorsImg(width, height, numOfColors)
-```
+This function returns image.Image.
